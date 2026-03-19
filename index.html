@@ -18,110 +18,85 @@ body{
 background:#f4f7fc;
 }
 
-/* Loader */
-#loader{
-position:fixed;
-width:100%;
-height:100%;
-background:white;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-z-index:9999;
-}
-
 /* Header */
 header{
-background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
-padding:20px 50px;
+background:rgba(15,23,42,0.95);
 display:flex;
 justify-content:space-between;
 align-items:center;
-position:sticky;
+padding:15px 50px;
+position:fixed;
+width:100%;
 top:0;
 z-index:1000;
 }
 
-header h1{
-color:white;
-font-size:28px;
-}
-
-nav ul{
+.logo{
 display:flex;
-list-style:none;
+align-items:center;
+color:white;
+font-size:24px;
+font-weight:bold;
 }
 
-nav ul li{
-position:relative;
+.logo img{
+width:50px;
+margin-right:10px;
 }
 
-nav ul li a{
+nav a{
 color:white;
 text-decoration:none;
-padding:10px 20px;
-display:block;
+margin-left:25px;
+font-size:17px;
+transition:0.3s;
 }
 
-nav ul li:hover ul{
-display:block;
+nav a:hover{
+color:#38bdf8;
 }
 
-nav ul ul{
-display:none;
-position:absolute;
-background:white;
-top:40px;
-left:0;
-min-width:180px;
-}
-
-nav ul ul li a{
-color:black;
-}
-
-/* Hero */
+/* Hero Video */
 .hero{
+position:relative;
 height:100vh;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');
-background-size:cover;
-background-position:center;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-color:white;
 text-align:center;
-padding:20px;
+color:white;
 }
 
-.hero h2{
-font-size:55px;
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+}
+
+.hero-content{
+background:rgba(0,0,0,0.5);
+padding:30px;
+border-radius:15px;
 animation:fadeIn 2s;
+}
+
+.hero h1{
+font-size:55px;
 }
 
 .hero p{
 font-size:22px;
 margin-top:15px;
-animation:fadeIn 3s;
-}
-
-.hero button{
-margin-top:25px;
-padding:14px 35px;
-border:none;
-background:#00c6ff;
-color:white;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
 }
 
 /* Sections */
 section{
-padding:80px 50px;
+padding:100px 50px;
 }
 
 .section-title{
@@ -131,48 +106,27 @@ margin-bottom:40px;
 color:#1e3a8a;
 }
 
+/* Services */
 .services{
 display:flex;
+flex-wrap:wrap;
 justify-content:center;
 gap:25px;
-flex-wrap:wrap;
 }
 
 .card{
 background:white;
-width:300px;
-padding:30px;
+width:280px;
+padding:25px;
 border-radius:15px;
 box-shadow:0 8px 20px rgba(0,0,0,0.12);
 text-align:center;
 transition:0.4s;
+animation:fadeUp 1.5s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-}
-
-/* Contact Form */
-form{
-max-width:500px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input, textarea{
-padding:12px;
-border:1px solid #ccc;
-border-radius:8px;
-}
-
-button.submit-btn{
-background:#2563eb;
-color:white;
-border:none;
-padding:12px;
-border-radius:8px;
 }
 
 /* Footer */
@@ -201,95 +155,99 @@ color:#38bdf8;
 .footer-box p,a{
 color:white;
 text-decoration:none;
-font-size:15px;
 line-height:1.8;
+}
+
+/* Animation */
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* Mobile */
 @media(max-width:768px){
-nav ul{
+header{
 flex-direction:column;
+}
+nav{
+margin-top:10px;
 }
 .services{
 flex-direction:column;
 align-items:center;
 }
-.footer-container{
-flex-direction:column;
-}
-}
-
-/* Animation */
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader">Loading...</div>
-
 <header>
-<h1>Mohit IT Solutions</h1>
+<div class="logo">
+<img src="logo.png" alt="Logo">
+Mohit IT Solutions
+</div>
+
 <nav>
-<ul>
-<li><a href="#home">Home</a></li>
-<li>
-<a href="#services">Services</a>
-<ul>
-<li><a href="#">Web Development</a></li>
-<li><a href="#">Software</a></li>
-<li><a href="#">IT Support</a></li>
-</ul>
-</li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<a href="index.html">Home</a>
+<a href="services.html">Services</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
 </nav>
 </header>
 
-<div class="hero" id="home">
-<h2>Premium IT Solutions For Business Growth</h2>
-<p>Website | Software | IT Consulting</p>
-<button>Start Project</button>
+<div class="hero">
+<video autoplay muted loop>
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
+<h1>Welcome to Mohit IT Solutions</h1>
+<p>Smart IT Services For Modern Businesses</p>
+</div>
 </div>
 
-<section id="services">
+<section>
 <h2 class="section-title">Our Services</h2>
+
 <div class="services">
+
+<div class="card">
+<h3>IT Problem Solving</h3>
+<p>All types of computer and network issue support.</p>
+</div>
+
 <div class="card">
 <h3>Website Development</h3>
-<p>Modern responsive websites.</p>
+<p>Modern responsive websites for all businesses.</p>
 </div>
-<div class="card">
-<h3>Software Solutions</h3>
-<p>Business automation software.</p>
-</div>
-<div class="card">
-<h3>IT Consulting</h3>
-<p>Technology growth solutions.</p>
-</div>
-</div>
-</section>
 
-<section id="about">
-<h2 class="section-title">About Us</h2>
-<p style="text-align:center;font-size:18px;">
-Mohit IT Solutions delivers professional digital services for modern businesses.
-</p>
-</section>
+<div class="card">
+<h3>App Development</h3>
+<p>Android and business mobile applications.</p>
+</div>
 
-<section id="contact">
-<h2 class="section-title">Contact Us</h2>
-<form>
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Your Email">
-<textarea rows="5" placeholder="Your Message"></textarea>
-<button class="submit-btn">Send Message</button>
-</form>
-<p style="text-align:center;margin-top:20px;">📞 8126529888</p>
+<div class="card">
+<h3>ERP Solutions</h3>
+<p>Business ERP implementation and support.</p>
+</div>
+
+<div class="card">
+<h3>Tally Solutions</h3>
+<p>Tally setup, support and accounting solutions.</p>
+</div>
+
+<div class="card">
+<h3>Software Support</h3>
+<p>All software installation and troubleshooting.</p>
+</div>
+
+</div>
 </section>
 
 <footer>
@@ -297,32 +255,26 @@ Mohit IT Solutions delivers professional digital services for modern businesses.
 
 <div class="footer-box">
 <h3>Mohit IT Solutions</h3>
-<p>Professional digital services for your business growth.</p>
+<p>Professional digital and IT services for business growth.</p>
 </div>
 
 <div class="footer-box">
 <h3>Quick Links</h3>
-<p><a href="#home">Home</a></p>
-<p><a href="#services">Services</a></p>
-<p><a href="#contact">Contact</a></p>
+<p><a href="index.html">Home</a></p>
+<p><a href="services.html">Services</a></p>
+<p><a href="contact.html">Contact</a></p>
 </div>
 
 <div class="footer-box">
 <h3>Contact Info</h3>
 <p>📞 8126529888</p>
-<p>📧 info@mohititsolutions.com</p>
+<p>📧 mohitsinghsvm12345@gmail.com</p>
 </div>
 
 </div>
 
 <p style="text-align:center;margin-top:30px;">© 2026 Mohit IT Solutions | All Rights Reserved</p>
 </footer>
-
-<script>
-window.onload=function(){
-document.getElementById("loader").style.display="none";
-}
-</script>
 
 </body>
 </html>
